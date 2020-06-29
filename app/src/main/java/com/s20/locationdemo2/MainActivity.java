@@ -71,9 +71,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
 
+        Log.d(TAG, "onStop: ");
         fusedLocationProviderClient.removeLocationUpdates(locationCallback);
     }
 
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startUpdateLocation() {
+        Log.d(TAG, "startUpdateLocation: ");
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(UPDATE_INTERVAL);
